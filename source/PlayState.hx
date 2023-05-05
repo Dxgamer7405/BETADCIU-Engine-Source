@@ -3,9 +3,9 @@ package;
 import flixel.graphics.FlxGraphic;
 #if desktop
 import Discord.DiscordClient;
+#end
 import LuaClass.LuaCamera;
 import LuaClass.LuaNote;
-#end
 import Section.SwagSection;
 import Song.SwagSong;
 import WiggleEffect.WiggleEffectType;
