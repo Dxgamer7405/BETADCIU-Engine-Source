@@ -55,7 +55,6 @@ import editors.ChartingState;
 import editors.CharacterEditorState;
 import editors.StageEditorState;
 import flixel.input.keyboard.FlxKey;
-import webm.WebmPlayer;
 import haxe.Exception;
 import openfl.geom.Matrix;
 import openfl.display.BitmapData;

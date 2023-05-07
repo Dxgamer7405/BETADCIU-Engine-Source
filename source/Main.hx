@@ -81,8 +81,6 @@ class Main extends Sprite
 		}
 	}
 
-	public static var webmHandler:WebmHandler;
-
 	private function init(?E:Event):Void
 	{
 		if (hasEventListener(Event.ADDED_TO_STAGE))
@@ -112,6 +110,46 @@ class Main extends Sprite
 		game = new FlxGame(gameWidth, gameHeight, initialState, #if (flixel < "5.0.0") zoom, #end framerate, framerate, skipSplash, startFullscreen);
 
 		addChild(game);
+
+		var ourSource:String = "assets/videos/DO NOT DELETE OR GAME WILL CRASH/dontDelete.webm";
+
+		var ourSource:String = "assets/videos/DO NOT DELETE OR GAME WILL CRASH/dontDelete.webm";
+
+
+
+		#if web
+		var str1:String = "HTML CRAP";
+
+		var vHandler = new VideoHandler();
+
+		vHandler.init1();
+
+		vHandler.video.name = str1;
+
+		addChild(vHandler.video);
+
+		vHandler.init2();
+
+		GlobalVideo.setVid(vHandler);
+
+		vHandler.source(ourSource);
+
+		#else
+
+		var str1:String = "WEBM SHIT"; 
+
+		var webmHandle = new WebmHandler();
+
+		webmHandle.source(ourSource);
+
+		webmHandle.makePlayer();
+
+		webmHandle.webm.name = str1;
+
+		addChild(webmHandle.webm);
+
+		GlobalVideo.setWebm(webmHandle);
+		#end
 
 		#if !mobile
 		fpsCounter = new FPS(10, 3, 0xFFFFFF);
