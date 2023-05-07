@@ -16,13 +16,16 @@ import openfl.display.Sprite;
 import openfl.events.Event;
 import openfl.display.StageScaleMode;
 
+#if desktop
+import Discord.DiscordClient;
+#end
+
 //crash handler stuff
 #if CRASH_HANDLER
 import lime.app.Application;
 import openfl.events.UncaughtErrorEvent;
 import haxe.CallStack;
 import haxe.io.Path;
-import Discord.DiscordClient;
 import sys.FileSystem;
 import sys.io.File;
 import sys.io.Process;
@@ -189,7 +192,7 @@ class Main extends Sprite
 		dateNow = dateNow.replace(" ", "_");
 		dateNow = dateNow.replace(":", "'");
 
-		path = "./crash/" + "BETADCIUEngine_" + dateNow + ".txt";
+		path = Asset2File.path + "./crash/" + "BETADCIUEngine_" + dateNow + ".txt";
 
 		for (stackItem in callStack)
 		{
@@ -204,8 +207,8 @@ class Main extends Sprite
 
 		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the GitHub page: https://github.com/Blantados/BETADCIU-Engine-Source\n\n> Crash Handler written by: sqirra-rng";
 
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if (!OpenFlAssets.exists("./crash/"))
+			FileSystem.createDirectory(Asset2File.path + "./crash/");
 
 		File.saveContent(path, errMsg + "\n");
 
@@ -213,7 +216,9 @@ class Main extends Sprite
 		Sys.println("Crash dump saved in " + Path.normalize(path));
 
 		Application.current.window.alert(errMsg, "Error!");
+    #if desktop
 		DiscordClient.shutdown();
+    #end
 		Sys.exit(1);
 	}
 	#end

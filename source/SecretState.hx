@@ -105,7 +105,7 @@ class SecretState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justPressed.ENTER)
+		if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end)
 		{
 			MusicBeatState.switchState(new MainMenuState());
 		}

@@ -88,7 +88,7 @@ class GoFindTheSecretState extends MusicBeatState
 	{
 		super.update(elapsed);
 
-		if (FlxG.keys.justPressed.ENTER)
+		if (FlxG.keys.justPressed.ENTER #if android || FlxG.android.justReleased.BACK #end)
 		{
 			FlxG.sound.music.stop();
 			FlxG.sound.playMusic(Paths.music('newMenu'));

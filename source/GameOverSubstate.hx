@@ -106,6 +106,10 @@ class GameOverSubstate extends MusicBeatSubstate
 		{
 			noDeathAnim = false;
 			boyfriend.playAnim('firstDeath');
+      #if android
+      addVirtualPad(NONE, A_B);
+      addVirtualPadCamera();
+      #end
 		}
 		else
 		{

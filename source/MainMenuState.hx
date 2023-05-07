@@ -133,6 +133,10 @@ class MainMenuState extends MusicBeatState
 
 		Main.isHidden = false;
 		
+    #if android
+  	addVirtualPad(UP_DOWN, A_B);
+    #end
+		
 		super.create();
 	}
 

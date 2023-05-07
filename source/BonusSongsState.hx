@@ -313,6 +313,10 @@ class BonusSongsState extends MusicBeatState
 			add(daText2);
 		}
 
+    #if android
+  	addVirtualPad(LEFT_FULL, A_B);
+    #end
+
 		super.create();
 	}
 
